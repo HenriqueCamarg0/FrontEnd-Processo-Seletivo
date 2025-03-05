@@ -1,1 +1,57 @@
-<p>candidate-form works!</p>
+<div class="container">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="form">
+      <h2>Formulário de Candidatura</h2>
+  
+      <div class="form-group">
+        <label for="name">Nome*</label>
+        <input type="text" id="name" formControlName="name" placeholder="Seu nome completo">
+        <small *ngIf="hasError('name')" class="error">{{getErrorMessage('name')}}</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input type="email" id="email" formControlName="email" placeholder="seu@email.com">
+        <small *ngIf="hasError('email')" class="error">{{getErrorMessage('email')}}</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="phone">Telefone*</label>
+        <input type="tel" id="phone" formControlName="phone" placeholder="(00) 00000-0000">
+        <small *ngIf="hasError('phone')" class="error">{{getErrorMessage('phone')}}</small>
+      </div>
+  
+    <div class="form-group">
+      <label for="vaga">Vaga*</label>
+      <select formControlName="vaga" id="vaga">
+        <option value="">Selecione uma vaga</option>
+        <option *ngFor="let type of jobTypes" [value]="type">
+            {{jobTitles[type]}}
+        </option>
+      </select>
+      <small *ngIf="hasError('vaga')" class="error">{{getErrorMessage('vaga')}}</small>
+    </div>
+  
+      <div class="form-group">
+        <label for="salario">Pretensão Salarial*</label>
+        <input type="number" id="salario" formControlName="salario" placeholder="0.00">
+        <small *ngIf="hasError('salario')" class="error">{{getErrorMessage('salario')}}</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="linkedin">LinkedIn (opcional)</label>
+        <input type="url" id="linkedin" formControlName="linkedin" placeholder="URL do LinkedIn">
+      </div>
+  
+      <div class="form-group">
+        <label for="github">GitHub (opcional)</label>
+        <input type="url" id="github" formControlName="github" placeholder="URL do GitHub">
+      </div>
+  
+      <button 
+      type="submit" 
+      class="submit-button"
+      [disabled]="jobForm.invalid"
+      (click)="showSubmitAlert()">
+      Enviar Candidatura
+    </button>    </form>
+  </div>

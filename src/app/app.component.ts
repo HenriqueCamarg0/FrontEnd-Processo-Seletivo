@@ -5,7 +5,7 @@ import { CandidateFormComponent } from "./features/candidate-form/candidate-form
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CandidateFormComponent],
+  imports: [RouterOutlet, CandidateFormComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
