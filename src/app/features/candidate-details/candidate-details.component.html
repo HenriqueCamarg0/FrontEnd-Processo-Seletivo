@@ -1,1 +1,62 @@
-<p>candidate-details works!</p>
+<div class="container" *ngIf="candidate">
+    <div class="card">
+      <div class="header">
+        <h2>Detalhes do Candidato</h2>
+        <span class="status-badge" [ngClass]="candidate.status?.toLowerCase()">
+          {{candidate.status}}
+        </span>
+      </div>
+  
+      <div class="candidate-info">
+        <div class="info-group">
+          <label>ID:</label>
+          <span>{{candidate.id}}</span>
+        </div>
+  
+        <div class="info-group">
+          <label>Nome:</label>
+          <span>{{candidate.nome}}</span>
+        </div>
+  
+        <div class="info-group">
+          <label>Email:</label>
+          <span>{{candidate.email}}</span>
+        </div>
+  
+        <div class="info-group">
+          <label>Telefone:</label>
+          <span>{{candidate.telefone}}</span>
+        </div>
+  
+        <div class="info-group">
+          <label>Vaga:</label>
+          <span>{{candidate.vaga}}</span>
+        </div>
+  
+        <div class="info-group">
+          <label>Pretensão Salarial:</label>
+          <span>{{candidate.salarioPretendido | currency:'BRL'}}</span>
+        </div>
+  
+        <div class="info-group" *ngIf="candidate.linkedin">
+          <label>LinkedIn:</label>
+          <a [href]="candidate.linkedin" target="_blank">{{candidate.linkedin}}</a>
+        </div>
+  
+        <div class="info-group" *ngIf="candidate.gitHub">
+          <label>GitHub:</label>
+          <a [href]="candidate.gitHub" target="_blank">{{candidate.gitHub}}</a>
+        </div>
+      </div>
+  
+      <div class="actions">
+        <button class="btn-edit" (click)="onEdit()">Editar</button>
+        <button class="btn-delete" (click)="onDelete()">Excluir</button>
+        <button class="btn-back" (click)="onBack()">Voltar</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="loading" *ngIf="!candidate">
+    <p>Carregando informações do candidato...</p>
+  </div>

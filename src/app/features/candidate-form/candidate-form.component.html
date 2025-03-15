@@ -3,9 +3,9 @@
       <h2>Formulário de Candidatura</h2>
   
       <div class="form-group">
-        <label for="name">Nome*</label>
-        <input type="text" id="name" formControlName="name" placeholder="Seu nome completo">
-        <small *ngIf="hasError('name')" class="error">{{getErrorMessage('name')}}</small>
+        <label for="nome">Nome*</label>
+        <input type="text" id="nome" formControlName="nome" placeholder="Seu nome completo">
+        <small *ngIf="hasError('nome')" class="error">{{getErrorMessage('nome')}}</small>
       </div>
   
       <div class="form-group">
@@ -15,9 +15,9 @@
       </div>
   
       <div class="form-group">
-        <label for="phone">Telefone*</label>
-        <input type="tel" id="phone" formControlName="phone" placeholder="(00) 00000-0000">
-        <small *ngIf="hasError('phone')" class="error">{{getErrorMessage('phone')}}</small>
+        <label for="telefone">Telefone*</label>
+        <input type="tel" id="telefone" formControlName="telefone" placeholder="(00) 00000-0000">
+        <small *ngIf="hasError('telefone')" class="error">{{getErrorMessage('telefone')}}</small>
       </div>
   
     <div class="form-group">
@@ -32,9 +32,9 @@
     </div>
   
       <div class="form-group">
-        <label for="salario">Pretensão Salarial*</label>
-        <input type="number" id="salario" formControlName="salario" placeholder="0.00">
-        <small *ngIf="hasError('salario')" class="error">{{getErrorMessage('salario')}}</small>
+        <label for="salarioPretendido">Pretensão Salarial*</label>
+        <input type="number" id="salarioPretendido" formControlName="salarioPretendido" placeholder="0.00">
+        <small *ngIf="hasError('salarioPretendido')" class="error">{{getErrorMessage('salarioPretendido')}}</small>
       </div>
   
       <div class="form-group">
@@ -43,8 +43,8 @@
       </div>
   
       <div class="form-group">
-        <label for="github">GitHub (opcional)</label>
-        <input type="url" id="github" formControlName="github" placeholder="URL do GitHub">
+        <label for="gitHub">GitHub (opcional)</label>
+        <input type="url" id="gitHub" formControlName="gitHub" placeholder="URL do GitHub">
       </div>
   
       <button 
@@ -53,5 +53,7 @@
       [disabled]="jobForm.invalid"
       (click)="showSubmitAlert()">
       Enviar Candidatura
-    </button>    </form>
-  </div>
+      </button>  
+  
+  </form>
+</div>

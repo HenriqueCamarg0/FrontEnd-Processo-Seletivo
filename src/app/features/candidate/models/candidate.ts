@@ -1,14 +1,13 @@
 import { JobType } from "./job";
 
 export interface Candidate {
-    id?: number;
-    name: string;
-    email: string;
-    phone: string;
-    vaga: JobType;
-    salario: number;
-    linkedin?: string;
-    github?: string;
-    createdAt?: Date;
-    status?: 'pending' | 'approved' | 'rejected';
-  }
+  id?: number;
+  nome: string;
+  email: string;
+  telefone: string;
+  vaga: JobType;
+  salarioPretendido: number;
+  linkedin?: string;
+  gitHub?: string;
+  status?: 'INSCRITO' | 'EM_ANALISE' | 'APROVADO' | 'REPROVADO';
+}

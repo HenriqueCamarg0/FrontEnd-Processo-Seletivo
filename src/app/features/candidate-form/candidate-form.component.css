@@ -106,6 +106,7 @@ button[type="submit"]:disabled {
     transform: none;
 }
 
+
 /* Estilo para campos obrigatórios */
 .form-group.required label::after {
     content: "*";
