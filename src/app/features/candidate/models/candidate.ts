@@ -1,7 +1,7 @@
 import { JobType } from "./job";
 
 export interface Candidate {
-  id?: number;
+  id: number;
   nome: string;
   email: string;
   telefone: string;

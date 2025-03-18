@@ -22,12 +22,12 @@ export const routes: Routes = [
             {
                 path: '', component: CandidateDetailsComponent,
                 title: 'Detalhes do Candidato'
-            },
-            {
-                path: ':id', component: CandidateDetailsComponent,
-                title: 'Perfil do Candidato'
             }
         ]
+    },
+    {
+        path: 'candidato/:id', component: CandidateDetailsComponent,
+        title: 'Perfil do Candidato'
     },
 
     // Listagem de Candidatos - Agrupamento de rotas relacionadas

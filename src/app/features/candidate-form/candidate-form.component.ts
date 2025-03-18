@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JobTitles, JobType } from '../candidate/models/job';
-import { CandidateService } from '../../core/services/candidate.service'; // Import the service
+import { ApiService } from '../../core/services/api.service';
 
 /**
  * Componente responsável pelo formulário de candidatura
@@ -23,22 +23,22 @@ export class CandidateFormComponent implements OnInit {
   // Objeto com os títulos das vagas
   jobTitles = JobTitles;
   
-  constructor(private fb: FormBuilder, private candidateService: CandidateService) {} // Inject the service
+  constructor(private fb: FormBuilder,  private apiService: ApiService 
 
+  ) {} // Inject the service
+  
   /**
    * Inicializa o formulário com os campos necessários e suas validações
    */
   ngOnInit() {
     this.jobForm = this.fb.group({
-      id: [null], // ID opcional
       nome: ['', [Validators.required, Validators.minLength(3)]], // Nome com mínimo de 3 caracteres
       email: ['', [Validators.required, Validators.email]], // Email válido
       telefone: ['', [Validators.required]], // Telefone obrigatório
       vaga: ['', Validators.required], // Vaga obrigatória
       salarioPretendido: ['', [Validators.required, Validators.min(0)]], // Salário maior que zero
-      linkedin: [''], // LinkedIn opcional
-      gitHub: [''], // GitHub opcional
-      status: ['EM_ANALISE'] // Status padrão
+      linkedin: [''], // Removida a validação obrigatória
+      gitHub: [''] // Removida a validação obrigatória
     });
   }
 
@@ -52,7 +52,7 @@ export class CandidateFormComponent implements OnInit {
       const formData = this.jobForm.value;
       console.log('Form data:', formData); // Log the form data
       // Envia os dados para o serviço CandidateService
-      this.candidateService.cadastrarCandidato(formData).subscribe({
+      this.apiService.addCandidate(formData).subscribe({
         next: (response) => {
           console.log('Form submitted:', response);
           this.showSubmitAlert();
@@ -105,10 +105,6 @@ export class CandidateFormComponent implements OnInit {
       control.markAsTouched();
     });
   }
-
-  /**
-   * Exibe um alerta de sucesso quando o formulário é enviado
-   */
   showSubmitAlert() {
     alert('Formulário enviado com sucesso!');
   }

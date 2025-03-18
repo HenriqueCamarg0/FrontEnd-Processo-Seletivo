@@ -2,7 +2,7 @@ const { log } = require("@angular-devkit/build-angular/src/builders/ssr-dev-serv
 
 const PROXY_CONFIG = [
     {
-        context: ["/api"],
+        context: ["/api/formulario"],
         target: "http://localhost:8080",
         secure: false,
         logLevel: "debug"
