@@ -15,15 +15,15 @@ Este é um projeto desenvolvido com [Angular CLI](https://github.com/angular/ang
 Uma breve visão da estrutura do projeto:
 
 src/
-
+│ 
 ├── app/
-
+│   │ 
 │   ├── core/             # Serviços gerais (API Service)
-
+│   │ 
 │   ├── features/         # Funcionalidades principais (Candidate)
-
+│   │ 
 │   ├── shared/           # Componentes e utilitários reutilizáveis
-
+│   │ 
 │   └── app.module.ts     # Módulo raiz
 
 
