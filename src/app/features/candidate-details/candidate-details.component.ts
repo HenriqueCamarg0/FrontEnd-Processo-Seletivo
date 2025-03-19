@@ -12,6 +12,16 @@ import { ApiService } from '../../core/services/api.service';
   imports: [CommonModule]
 })
 export class CandidateDetailsComponent implements OnInit {
+onEdit() {
+throw new Error('Method not implemented.');
+}
+onDelete() {
+throw new Error('Method not implemented.');
+}
+onBack() {
+throw new Error('Method not implemented.');
+}
+candidate: any;
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }

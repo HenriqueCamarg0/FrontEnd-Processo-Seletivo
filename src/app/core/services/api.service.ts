@@ -16,14 +16,16 @@ export class ApiService {
     return this.http.get<any>(`${this.API}/lista-de-candidatos`);
   }
   
-  // Adicione outros métodos conforme necessário para interagir com sua API
   getCandidateById(id: number): Observable<any> {
     return this.http.get<any>(`${this.API}/candidato/${id}`);
   }
 
   addCandidate(candidate: any): Observable<any> {
-    return this.http.post<any>(`${this.API}/cadastrar-candidato`, JSON.stringify(candidate));
+    return this.http.post<any>(`${this.API}/cadastrar-candidato`, candidate, {
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
+  
 
   updateCandidate(id: number, candidate: any): Observable<any> {
     return this.http.put<any>(`${this.API}/candidato/${id}`, candidate);
@@ -32,4 +34,6 @@ export class ApiService {
   deleteCandidate(id: number): Observable<any> {
     return this.http.delete<any>(`${this.API}/candidato/${id}`);
   }
+
+  
 }
