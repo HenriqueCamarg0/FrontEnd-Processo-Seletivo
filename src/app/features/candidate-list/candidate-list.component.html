@@ -1,1 +1,48 @@
-<p>candidate-list works!</p>
+<div class="candidate-list-container">
+  <header class="list-header">
+    <h2>Lista de Candidatos</h2>
+    <div class="actions">
+      <div class="search-box">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          placeholder="Buscar candidatos..."
+          (input)="filterCandidates()">
+      </div>
+      <select [(ngModel)]="statusFilter" (ngModelChange)="filterCandidates()">
+        <option value="">Todos os Status</option>
+        <option value="EM_ANALISE">Em Análise</option>
+        <option value="APROVADO">Aprovado</option>
+        <option value="REJEITADO">Rejeitado</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="candidatos" *ngIf="filteredCandidatos.length > 0; else noCandidatesTemplate">
+    <div class="candidate-card" *ngFor="let candidato of filteredCandidatos">
+      <div class="candidate-info">
+        <div class="card-header">
+          <h3>{{ candidato.nome }}</h3>
+          <span class="status-badge" [ngClass]="candidato.status.toLowerCase()">
+            {{ (candidato.status) }}
+          </span>
+        </div>
+        <div class="card-body">
+          <p><i class="fas fa-envelope"></i> {{ candidato.email }}</p>
+          <p><i class="fas fa-phone"></i> {{ candidato.telefone }}</p>
+          <p><i class="fas fa-briefcase"></i> {{ (candidato.vaga) }}</p>
+          <p><i class="fas fa-money-bill"></i> R$ {{ candidato.salarioPretendido | number:'1.2-2' }}</p>
+          <p><i class="fab fa-linkedin"></i> <a [href]="candidato.linkedin" target="_blank">LinkedIn</a></p>
+          <p><i class="fab fa-github"></i> <a [href]="candidato.github" target="_blank">GitHub</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noCandidatesTemplate>
+    <div class="no-candidates">
+      <i class="fas fa-user-slash"></i>
+      <p>Nenhum candidato encontrado.</p>
+    </div>
+  </ng-template>
+</div>

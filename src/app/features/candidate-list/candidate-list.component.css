@@ -1,0 +1,155 @@
+.candidate-list-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.candidate-list-container .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.candidate-list-container .list-header h2 {
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.candidate-list-container .list-header .actions {
+    display: flex;
+    gap: 16px;
+}
+
+.candidate-list-container .list-header .actions .search-box input,
+.candidate-list-container .list-header .actions select {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+.candidate-list-container .candidatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.candidate-list-container .candidate-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.candidate-list-container .candidate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.candidate-list-container .candidate-card .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.candidate-list-container .candidate-card .edit-btn {
+    background: none;
+    border: none;
+    color: #3498db;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.candidate-list-container .candidate-card .edit-btn:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: scale(1.1);
+}
+
+.candidate-list-container .candidate-card .edit-btn i {
+    font-size: 16px;
+}
+
+.candidate-list-container .candidate-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.candidate-list-container .candidate-card .card-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.candidate-list-container .candidate-card .card-body {
+    padding: 16px;
+}
+
+.candidate-list-container .candidate-card .card-body p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.candidate-list-container .candidate-card .card-body p i {
+    color: #3498db;
+    width: 20px;
+}
+
+.candidate-list-container .candidate-card .status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.candidate-list-container .candidate-card .status-badge.em_analise {
+    background: #f1c40f;
+    color: #444;
+}
+
+.candidate-list-container .candidate-card .status-badge.aprovado {
+    background: #2ecc71;
+    color: white;
+}
+
+.candidate-list-container .candidate-card .status-badge.rejeitado {
+    background: #e74c3c;
+    color: white;
+}
+
+.candidate-list-container .candidate-card .social-links {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+}
+
+.candidate-list-container .candidate-card .social-links a {
+    color: #7f8c8d;
+    font-size: 20px;
+    transition: color 0.2s;
+}
+
+.candidate-list-container .candidate-card .social-links a:hover {
+    color: #3498db;
+}
+
+.candidate-list-container .no-candidates {
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #7f8c8d;
+}
+
+.candidate-list-container .no-candidates i {
+    font-size: 48px;
+    margin-bottom: 16px;
+}

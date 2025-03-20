@@ -3,6 +3,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { JobTitles, JobType } from '../candidate/models/job';
 import { ApiService } from '../../core/services/api.service';
+import { Router } from '@angular/router';
+
 
 /**
  * Componente responsável pelo formulário de candidatura
@@ -23,10 +25,9 @@ export class CandidateFormComponent implements OnInit {
   // Objeto com os títulos das vagas
   jobTitles = JobTitles;
   
-  constructor(private fb: FormBuilder,  private apiService: ApiService 
-
-  ) {} // Inject the service
-  
+  constructor(private fb: FormBuilder,  private apiService: ApiService, 
+    private router: Router ) {} 
+    
   /**
    * Inicializa o formulário com os campos necessários e suas validações
    */
@@ -55,8 +56,10 @@ export class CandidateFormComponent implements OnInit {
       this.apiService.addCandidate(formData).subscribe({
         next: (response) => {
           console.log('Form submitted:', response);
-          this.showSubmitAlert();
+          this.EnviarCandidatura();
           this.jobForm.reset();
+          this.router.navigate(['/lista-candidatos']);
+
         },
         error: (error) => {
           console.error('Error submitting form:', error);
@@ -105,7 +108,8 @@ export class CandidateFormComponent implements OnInit {
       control.markAsTouched();
     });
   }
-  showSubmitAlert() {
+  EnviarCandidatura() {
     alert('Formulário enviado com sucesso!');
+    
   }
 }

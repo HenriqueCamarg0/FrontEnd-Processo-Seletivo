@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getData().subscribe(response => {
+    this.apiService.getListaCandidato().subscribe(response => {
       this.data = response;
       console.log(this.data);
     });
