@@ -12,18 +12,45 @@ import { ApiService } from '../../core/services/api.service';
   imports: [CommonModule]
 })
 export class CandidateDetailsComponent implements OnInit {
-onEdit() {
-throw new Error('Method not implemented.');
-}
-onDelete() {
-throw new Error('Method not implemented.');
-}
-onBack() {
-throw new Error('Method not implemented.');
-}
-candidate: any;
+  candidate?: Candidate; // Armazena os detalhes do candidato
+
+  constructor(
+    private route: ActivatedRoute, // Para acessar parâmetros de rota
+    private router: Router, // Para navegação programática
+    private apiService: ApiService // Serviço para chamadas de API
+  ) {}
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // Obtém o ID do candidato a partir da rota
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      // Busca os detalhes do candidato pelo ID
+      this.apiService.getCandidateById(+id).subscribe({
+        next: (candidate) => this.candidate = candidate,
+        error: (err) => console.error('Error fetching candidate:', err)
+      });
+    }
   }
- 
+
+  onEdit() {
+    // Navega para a página de edição do candidato
+    if (this.candidate) {
+      this.router.navigate(['/candidato', this.candidate.id, 'edit']);
+    }
+  }
+
+  onDelete() {
+    // Deleta o candidato e navega de volta para a lista de candidatos
+    if (this.candidate) {
+      this.apiService.deleteCandidate(this.candidate.id).subscribe({
+        next: () => this.router.navigate(['/candidatos']),
+        error: (err) => console.error('Error deleting candidate:', err)
+      });
+    }
+  }
+
+  onBack() {
+    // Navega de volta para a lista de candidatos
+    this.router.navigate(['/candidatos']);
+  }
 }
